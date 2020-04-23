@@ -7,6 +7,10 @@ import (
 
 //TODO :最大并发数限制
 
+type Message interface {
+	GetMessageID() MessageID
+}
+
 type MessageHub interface {
 	Publish(message Message)
 	Subscribe(messageID MessageID, messageHandler MessageHandler) (HandlerID, error)
